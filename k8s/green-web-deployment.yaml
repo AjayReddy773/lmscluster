@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: web-green-server
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: web-green-server
+
+  template:
+    metadata:
+      labels:
+        app: web-green-server
+
+    spec:
+      containers:
+        - name: web-green-server
+
+          image: 438281141060.dkr.ecr.ap-southeast-1.amazonaws.com/lms-fe:v2
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 80
